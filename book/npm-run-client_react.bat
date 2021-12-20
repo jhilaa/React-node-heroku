@@ -1,1 +1,1 @@
-cmd /k "cd client"&& "npm start"
+cmd /k "cd client" && "npm start"
