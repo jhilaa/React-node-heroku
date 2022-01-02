@@ -5,11 +5,11 @@ const Projet = function (Project) {
   this.title = Project.title;
   this.description = Project.description;
   this.snapshot = Project.snapshot;
-  this.keywords = Project.keywords;
+  this.projects = Project.projects;
 };
 
 Projet.findById = (id, result) => {
-  sql.query(`SELECT id,  FROM projects WHERE id = ${id}`, (err, res) => {
+  sql.query(`SELECT id  FROM projects WHERE id = ${id}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -27,9 +27,9 @@ Projet.findById = (id, result) => {
   });
 };
 
-Projet.findKeywordsByProjectId = (id, result) => {
+Projet.findprojectsByProjectId = (id, result) => {
   sql.query(
-    `SELECT * FROM keywords INNER JOIN link_projects_keywords on keywords.id=link_projects_keywords.id_keyword WHERE link_projects_keywords.id_project = ${id}`,
+    `SELECT * FROM projects INNER JOIN link_projects_keywords on projects.id=link_projects_keywords.id_project WHERE link_projects_keywords.id_project = ${id}`,
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -38,7 +38,7 @@ Projet.findKeywordsByProjectId = (id, result) => {
       }
 
       if (res.length) {
-        console.log("found keywords: ", res);
+        console.log("found projects: ", res);
         result(null, res);
         return;
       }
@@ -49,9 +49,9 @@ Projet.findKeywordsByProjectId = (id, result) => {
   );
 };
 
-Projet.findKeywords = (result) => {
+Projet.findprojects = (result) => {
   sql.query(
-    `SELECT * FROM keywords INNER JOIN link_projects_keywords on keywords.id=link_projects_keywords.id_keyword`,
+    `SELECT * FROM projects INNER JOIN link_projects_keywords on projects.id=link_projects_keywords.id_project`,
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -60,7 +60,7 @@ Projet.findKeywords = (result) => {
       }
 
       if (res.length) {
-        console.log("found keywords: ", res);
+        console.log("found projects: ", res);
         result(null, res);
         return;
       }
@@ -71,12 +71,9 @@ Projet.findKeywords = (result) => {
   );
 };
 
-Projet.getAll = (title, result) => {
+Projet.getAll = (result) => {
   let query =
     "SELECT p.`id` as project_id, p.`title`, p.`description`, p.`snapshot`, k.`id` as keyword_id, k.`keyword`, k.`color` FROM `projects` as p LEFT OUTER JOIN `link_projects_keywords` as lpk on p.`id` = lpk.`id_project` left outer join `keywords` as k on lpk.`id_keyword` = k.`id` ORDER BY p.`id`, k.`id`;";
-  if (title) {
-    query += ` WHERE title LIKE '%${title}%'`;
-  }
   console.log(query);
 
   sql.query(query, (err, res) => {

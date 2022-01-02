@@ -30,8 +30,8 @@ function Header() {
               </Link>
             </li>
             <li class="nav-item nav-link">
-              <Link to="ada">
-                <a class="nav-item nav-link">ADA</a>
+              <Link to="keywords">
+                <a class="nav-item nav-link">Mots-clé</a>
               </Link>
             </li>
             <li class="nav-item nav-link"></li>

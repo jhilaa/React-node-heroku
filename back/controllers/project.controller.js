@@ -2,14 +2,10 @@ const Projet = require("../models/Project.model.js");
 
 // Retrieve all Projects from the database (with condition).
 exports.findAll = (req, res) => {
-  const title = req.query.title;
-  console.log(req.query.title);
-
-  Projet.getAll(title, (err, data) => {
+  Projet.getAll((err, data) => {
     if (err)
       res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving tutorials.",
+        message: err.message || "Some error occurred while retrieving project.",
       });
     else res.send(data);
   });
@@ -50,8 +46,8 @@ exports.findKeywordsByProject = (req, res) => {
 };
 
 // Find keywords for all projet
-exports.findKeywords = (req, res) => {
-  Projet.findKeywords((err, data) => {
+exports.findProjects = (req, res) => {
+  Projet.findProjects((err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
@@ -59,7 +55,7 @@ exports.findKeywords = (req, res) => {
         });
       } else {
         res.status(500).send({
-          message: "Error retrieving keywords " + req.params.id,
+          message: "Error retrieving projects " + req.params.id,
         });
       }
     } else res.send(data);

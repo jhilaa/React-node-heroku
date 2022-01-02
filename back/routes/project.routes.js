@@ -26,9 +26,6 @@ module.exports = (app) => {
   // Retrieve keywords for a single Project with id
   app.get("/api/projects/:id/keywords", projects.findKeywordsByProject);
 
-  // Retrieve keywords for all Projects
-  app.get("/api/keywords", projects.findKeywords);
-
   // Update a Project with id
   //router.put("/:id", projects.update);
 

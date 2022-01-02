@@ -1,5 +1,5 @@
 module.exports = (app) => {
-  const ressources = require("../controllers/ressource.controller.js");
+  const keywords = require("../controllers/keyword.controller.js");
   var router = require("express").Router();
 
   router.use(function (req, res, next) {
@@ -11,20 +11,14 @@ module.exports = (app) => {
     next();
   });
 
-  // Create a new Ressource
-  //router.post("/", ressources.create);
+  // Create a new keywords
+  app.post("api/keywords/", keywords.create);
 
-  // Retrieve all ressources
-  app.get("/api/ressources", ressources.findAll);
-
-  // Retrieve all published ressources
-  //router.get("/published", ressources.findAllPublished);
+  // Retrieve all keywords
+  app.get("/api/keywords", keywords.findAll);
 
   // Retrieve a single Ressource with id
-  app.get("/api/ressources/:id", ressources.findOne);
-
-  // Retrieve keywords for a single Ressource with id
-  app.get("/api/ressources/:id/keywords", ressources.findKeywordsByRessource);
+  app.get("/api/keywords/:id", keywords.findOne);
 
   // Update a Ressource with id
   //router.put("/:id", ressources.update);
