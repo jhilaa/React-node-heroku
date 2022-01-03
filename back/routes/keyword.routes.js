@@ -12,16 +12,18 @@ module.exports = (app) => {
   });
 
   // Create a new keywords
-  app.post("/api/keywords", keywords.create);
+  app.post("/api/keywords", (req, res) => {
+    keywords.create(req, res);
+  });
 
   // Retrieve all keywords
   app.get("/api/keywords", keywords.findAll);
 
-  // Retrieve a single Ressource with id
+  // Retrieve a single keyword with id
   app.get("/api/keywords/:id", keywords.findOne);
 
-  // Update a Ressource with id
-  //router.put("/:id", ressources.update);
+  // Update a keyword with id
+  //router.put("/api/keywords/:id", keywords.update);
 
   // Delete a Ressource with id
   //router.delete("/:id", ressources.delete);

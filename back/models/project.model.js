@@ -86,4 +86,19 @@ Projet.getAll = (result) => {
   });
 };
 
+Projet.getProjectWithKeywords = (result) => {
+  let query =
+    "SELECT p.`id` as project_id, p.`title`, p.`description`, p.`snapshot`, k.`id` as keyword_id, k.`keyword`, k.`color` FROM `projects` as p LEFT OUTER JOIN `link_projects_keywords` as lpk on p.`id` = lpk.`id_project` left outer join `keywords` as k on lpk.`id_keyword` = k.`id` ORDER BY p.`id`, k.`id`;";
+  console.log(query);
+
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    result(null, res);
+  });
+};
+
 module.exports = Projet;

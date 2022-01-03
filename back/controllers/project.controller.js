@@ -1,4 +1,4 @@
-const Projet = require("../models/Project.model.js");
+const Projet = require("../models/project.model.js");
 
 // Retrieve all Projects from the database (with condition).
 exports.findAll = (req, res) => {

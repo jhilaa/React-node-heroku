@@ -6,10 +6,13 @@ const Keyword = function (Keyword) {
   this.color = Keyword.color;
 };
 
-Keyword.createKeyword = (newKeyword, result) => {
-  console.log("create**********");
-  console.log(newKeyword);
-  let query = `INSERT INTO keywords (keyword, color) values ("${newKeyword.keyword}", "${newKeyword.color}");`;
+Keyword.createKeyword = (keyword, color, result) => {
+  let query =
+    `INSERT INTO keywords (keyword, color) values (` +
+    keyword +
+    `, ` +
+    color +
+    `);`;
   console.log(query);
   sql.query(query, (err, res) => {
     if (err) {
@@ -25,6 +28,7 @@ Keyword.createKeyword = (newKeyword, result) => {
           });
         } else {
           console.log("Transaction commited");
+          return;
         }
       });
     }
