@@ -2,7 +2,19 @@ const Keyword = require("../models/Keyword.model.js");
 
 // Retrieve all keywords from the database
 exports.create = (req, res) => {
-  Keyword.create(new Keyword(req.keyword, req.color), (err, data) => {
+  if (!req.body) {
+    res.status(400).send({
+      message: "Content can not be empty!",
+    });
+  }
+  console.log(req.body);
+  // create the keyword
+  const keyword = new Keyword({
+    keyword: req.params.keyword,
+    color: req.params.color,
+  });
+  // put the keyword in the database
+  Keyword.createKeyword(keyword, (err, data) => {
     if (err)
       res.status(500).send({
         message: err.message || "Some error occurred while creating keywords.",

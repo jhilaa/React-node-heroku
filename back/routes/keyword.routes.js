@@ -12,7 +12,7 @@ module.exports = (app) => {
   });
 
   // Create a new keywords
-  app.post("api/keywords/", keywords.create);
+  app.post("/api/keywords", keywords.create);
 
   // Retrieve all keywords
   app.get("/api/keywords", keywords.findAll);

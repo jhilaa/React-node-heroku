@@ -6,12 +6,27 @@ const Keyword = function (Keyword) {
   this.color = Keyword.color;
 };
 
-Keyword.create = (newKeyword, result) => {
-  sql.query("INSERT INTO keywords SET ?", newKeyword, (err, res) => {
+Keyword.createKeyword = (newKeyword, result) => {
+  console.log("create**********");
+  console.log(newKeyword);
+  let query = `INSERT INTO keywords (keyword, color) values ("${newKeyword.keyword}", "${newKeyword.color}");`;
+  console.log(query);
+  sql.query(query, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
       return;
+    } else {
+      sql.commit(function (err) {
+        console.log("Commiting transaction.....");
+        if (err) {
+          return sql.rollback(function () {
+            throw err;
+          });
+        } else {
+          console.log("Transaction commited");
+        }
+      });
     }
   });
 };
@@ -49,6 +64,7 @@ Keyword.getAll = (result) => {
 };
 
 //--------------------------
+/*
 Keyword.create = (newKeyword, result) => {
   sql.query("INSERT INTO keywords SET ?", newKeyword, (err, res) => {
     if (err) {
@@ -61,7 +77,7 @@ Keyword.create = (newKeyword, result) => {
     result(null, { id: res.insertId, ...newKeyword });
   });
 };
-
+*/
 //--------------------------------
 Keyword.updateById = (id, keyword, result) => {
   sql.query(
@@ -75,19 +91,19 @@ Keyword.updateById = (id, keyword, result) => {
       }
 
       if (res.affectedRows == 0) {
-        // not found Tutorial with the id
+        // not found Keyword with the id
         result({ kind: "not_found" }, null);
         return;
       }
 
-      console.log("updated tutorial: ", { id: id, ...tutorial });
-      result(null, { id: id, ...tutorial });
+      console.log("updated keyword: ", { id: id, ...keyword });
+      result(null, { id: id, ...keyword });
     }
   );
 };
 
-Tutorial.remove = (id, result) => {
-  sql.query("DELETE FROM tutorials WHERE id = ?", id, (err, res) => {
+Keyword.remove = (id, result) => {
+  sql.query("DELETE FROM keywords WHERE id = ?", id, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -95,12 +111,12 @@ Tutorial.remove = (id, result) => {
     }
 
     if (res.affectedRows == 0) {
-      // not found Tutorial with the id
+      // not found Keyword with the id
       result({ kind: "not_found" }, null);
       return;
     }
 
-    console.log("deleted tutorial with id: ", id);
+    console.log("deleted keyword with id: ", id);
     result(null, res);
   });
 };
