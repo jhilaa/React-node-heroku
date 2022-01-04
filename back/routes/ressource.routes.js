@@ -26,9 +26,6 @@ module.exports = (app) => {
   // Retrieve keywords for a single Ressource with id
   app.get("/api/ressources/:id/keywords", ressources.findKeywordsByRessource);
 
-  // Retrieve keywords for all Ressources
-  app.get("/api/keywords", ressources.findKeywords);
-
   // Update a Ressource with id
   //router.put("/:id", ressources.update);
 

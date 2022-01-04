@@ -9,7 +9,7 @@ import "./style/index.css";
 
 const rootElement = document.getElementById("app");
 ReactDOM.render(
-  <BrowserRouter>
+  <BrowserRouter forceRefresh={true}>
     <Routes>
       <Route path="/" element={<Header />}>
         <Route index element={<Items route="projects" />} />
@@ -17,7 +17,10 @@ ReactDOM.render(
         <Route path="ressources" element={<Items route="ressources" />}></Route>
         <Route path="media" element={<Items route="media" />}></Route>
         <Route path="experience" element={<Items route="experience" />}></Route>
-        <Route path="ada" element={<Items route="ada" />}></Route>
+        <Route
+          path="new-keyword"
+          element={<Items route="new-keyword" />}
+        ></Route>
       </Route>
     </Routes>
   </BrowserRouter>,

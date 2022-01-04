@@ -9,7 +9,7 @@ const Ressource = function (Ressource) {
 };
 
 Ressource.findById = (id, result) => {
-  sql.query(`SELECT id,  FROM ressources WHERE id = ${id}`, (err, res) => {
+  sql.query(`SELECT *  FROM ressources WHERE id = ${id}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);

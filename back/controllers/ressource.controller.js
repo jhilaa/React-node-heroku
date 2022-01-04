@@ -9,7 +9,7 @@ exports.findAll = (req, res) => {
     if (err)
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving tutorials.",
+          err.message || "Some error occurred while retrieving ressources.",
       });
     else res.send(data);
   });
@@ -50,8 +50,8 @@ exports.findKeywordsByRessource = (req, res) => {
 };
 
 // Find keywords for all ressource
-exports.findKeywords = (req, res) => {
-  Ressource.findKeywords((err, data) => {
+exports.Ressources = (req, res) => {
+  Ressource.findRessources((err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({

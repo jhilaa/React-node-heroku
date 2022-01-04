@@ -18,7 +18,12 @@ app.get("/api/test", (req, res) => {
 
 require("./routes/project.routes.js")(app);
 require("./routes/ressource.routes.js")(app);
+require("./routes/keyword.routes.js")(app);
 
 app.listen(PORT, () => {
   console.log(`le serveur est lancé sur le port : ${PORT}`);
+  console.log(process.env.PORT);
+  console.log(process.env.BASEURL);
+  console.log(process.env.BASEURL + ":7000/api/");
+  console.log("--");
 });

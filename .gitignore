@@ -3,3 +3,6 @@
 /back/node_modules
 /back/.env
 /back/config/db.config.js
+*.bat
+note.md
+
