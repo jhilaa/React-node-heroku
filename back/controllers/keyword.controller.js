@@ -1,9 +1,8 @@
-const Keyword = require("../models/Keyword.model.js");
+const Keyword = require("../models/keyword.model.js");
 
 // Retrieve all keywords from the database
 exports.findAll = (req, res) => {
   Keyword.getAll((err, data) => {
-    S;
     if (err)
       res.status(500).send({
         message: err.message || "Some error occurred while retrieving project.",
