@@ -9,7 +9,7 @@ import "./style/index.css";
 
 const rootElement = document.getElementById("app");
 ReactDOM.render(
-  <BrowserRouter>
+  <BrowserRouter forceRefresh={true}>
     <Routes>
       <Route path="/" element={<Header />}>
         <Route index element={<Items route="projects" />} />

@@ -7,12 +7,7 @@ import { useState } from "react";
 // A relier à votre API
 // Créer le bouton qui relie à Modal_description.js
 
-function toggleFocus() {
-  this.setState({ focus: !this.state.focus });
-}
-
 function Item({ info }) {
-  const [show, setShow] = useState(false);
   return (
     <div class="card text-dark flex-row">
       <img

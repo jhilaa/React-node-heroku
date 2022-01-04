@@ -14,12 +14,6 @@ exports.findAll = (req, res) => {
 
 // put the keyword in the database
 exports.create = (req, res) => {
-  console.log("---------------------");
-  console.log(req);
-  console.log(req.query.color);
-  console.log("---------------------");
-  console.log(req.query.keyword);
-  console.log(req.query.color);
   Keyword.createKeyword(
     req.query.keyword,
     req.query.color,

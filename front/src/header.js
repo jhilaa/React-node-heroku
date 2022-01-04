@@ -20,7 +20,7 @@ function Header() {
               </Link>
             </li>
             <li class="nav-item nav-link">
-              <Link to="media">
+              <Link to="/media">
                 <a class="nav-item nav-link">Media</a>
               </Link>
             </li>
