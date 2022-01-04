@@ -11,7 +11,7 @@ dans server.js (on redirige tout sur index.html)
 
 //=======================
 heroku login -> connexion à heroku
-git push heroku master
+git push heroku main
 
 //=======================
 en cas de problème avec heroku, tenter un
