@@ -1,4 +1,4 @@
-const Keyword = require("../models/Keyword.model.js");
+const Keyword = require("../models/keyword.model.js");
 
 // Retrieve all keywords from the database
 exports.findAll = (req, res) => {
