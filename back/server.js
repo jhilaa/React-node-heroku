@@ -1,5 +1,5 @@
 const express = require("express");
-//const PATH = require("path"); //directement dans node
+const PATH = require("path"); //directement dans node
 const cors = require("cors");
 require("dotenv").config();
 

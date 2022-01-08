@@ -1,1 +1,0 @@
-cmd /k "cd back" && "npm run watch"
