@@ -10,13 +10,9 @@ function Items(params) {
     // Met à jour le titre du document via l’API du navigateur
     console.log("process.env.NODE_ENV");
     console.log(process.env.NODE_ENV);
-    console.log("process.env.REACT_APP_API_URL");
+    console.log("process.env.REACT_APP_BASEURL");
     console.log(process.env.REACT_APP_API_URL);
-    console.log("params.route");
-    console.log(params.route);
-    console.log(process.env.REACT_APP_API_URL);
-    console.log(process.env.REACT_APP_API_URL + params.route);
-    fetch("http://localhost:7000/api/" + params.route, {}).then((response) => {
+    fetch(process.env.REACT_APP_API_URL + params.route, {}).then((response) => {
       response.json().then((json) => {
         let newJson = new Array();
         let newJsonKeyword = {};
