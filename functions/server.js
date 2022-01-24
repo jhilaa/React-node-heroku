@@ -6,9 +6,16 @@ require("dotenv").config();
 const PORT = process.env.PORT || 7000;
 const app = express();
 
-app.use(cors());
+// new
+app.use(
+  cors({
+    origin: `https://my-demo-node-react.herokuapp.com/`, //react's address
+    credentials: true,
+  })
+);
+
 app.use(express.json());
-app.use(express.static("../front/build"));
+app.use(express.static("../client/build"));
 
 app.get("/api/test", (req, res) => {
   res.send({

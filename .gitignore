@@ -1,8 +1,8 @@
 /node_modules
-/front/node_modules
-/back/node_modules
-/back/.env
-/back/config/db.config.js
+/client/node_modules
+/functions/node_modules
+/functions/.env
+/functions/config/db.config.js
 *.bat
 note.md
 

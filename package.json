@@ -1,14 +1,14 @@
 {
-  "name": "back",
+  "name": "functions",
   "version": "1.0.0",
   "description": "",
-  "main": "back/server.js",
+  "main": "functions/server.js",
   "scripts": {
-    "start": "cd back && node server.js",
-    "watch": "cd back && nodemon server.js",
-    "client": "cd front && npm start",
-    "build": "cd front && npm run build",
-    "install-client": "cd front && npm install",
+    "start": "cd functions && node server.js",
+    "watch": "cd functions && nodemon server.js",
+    "client": "cd client && npm start",
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install",
     "heroku-postbuild": "npm run install-client && npm run build"
   },
   "engines": {
