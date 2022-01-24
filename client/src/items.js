@@ -16,7 +16,7 @@ function Items(params) {
     console.log(params.route);
     console.log(process.env.REACT_APP_API_URL);
     console.log(process.env.REACT_APP_API_URL + params.route);
-    fetch("http://localhost:7000/api/" + params.route, {}).then((response) => {
+    fetch("http://localhost:7000/apix/" + params.route, {}).then((response) => {
       response.json().then((json) => {
         let newJson = new Array();
         let newJsonKeyword = {};
