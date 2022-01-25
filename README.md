@@ -8,16 +8,11 @@ A partir d'une même structure de page, on accède à des "cartes de visite" de 
 Le site a été conçu pour être déployé sur [Heroku](https://www.heroku.com/ "Heroku")
 
 ## Package
-_wip_
-
-### Pré-requis
-_wip_
-
-### Installation
-_wip_
-
-## Démarrage
-_wip_
+- bootstrap
+- react
+- react-dom
+- react-router
+- react-router-dom
 
 ## Fabriqué avec
 
